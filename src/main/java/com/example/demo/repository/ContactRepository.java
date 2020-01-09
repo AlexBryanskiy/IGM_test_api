@@ -9,7 +9,7 @@ public interface ContactRepository {
 
     List<Contact> getContacts();
 
-    Contact insert(Contact contact);
+    void insert(Contact contact);
 
-    Contact update(Contact contact);
+    Contact update(int id, Contact contact);
 }

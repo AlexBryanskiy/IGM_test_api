@@ -28,13 +28,13 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public Contact createContact(Contact contact) {
-        return this.contactRepository.insert(contact);
+    public void createContact(Contact contact) {
+        this.contactRepository.insert(contact);
     }
 
     @Override
-    public Contact updateContact(Contact contact) {
-        return null;
+    public Contact updateContact(int id, Contact contact) {
+        return this.contactRepository.update(id, contact);
     }
 
     @Override

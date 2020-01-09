@@ -2,6 +2,7 @@ package com.example.demo.repository;
 
 import com.example.demo.model.Contact;
 import org.springframework.stereotype.Repository;
+
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -25,13 +26,18 @@ public class ContactRepositoryImpl implements ContactRepository {
     }
 
     @Override
-    public Contact insert(Contact contact) {
+    public void insert(Contact contact) {
         this.collection.put(contact.getId(), contact);
-        return contact;
     }
 
     @Override
-    public Contact update(Contact contact) {
+    public Contact update(int id, Contact contact) {
+        if (this.collection.containsKey(id)) {
+            this.collection.replace(id, contact);
+
+            return contact;
+        }
+
         return null;
     }
 }

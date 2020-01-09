@@ -58,4 +58,31 @@ public class ContactController {
 
         return new ResponseEntity<>(contact, HttpStatus.OK);
     }
+
+    /**
+     * Update contact response entity.
+     *
+     * @param id      the id of entity
+     * @param payload the payload
+     * @return the response entity
+     */
+    @RequestMapping(value = "contact/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Contact> updateContact(@PathVariable("id") String id, @RequestBody String payload) {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        Contact contact = null;
+
+        try {
+            contact = objectMapper.readValue(payload, Contact.class);
+        } catch (JsonProcessingException exception) {
+            return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
+        }
+
+        if (this.contactService.updateContact(Integer.parseInt(id), contact) == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(contact, HttpStatus.OK);
+        }
+    }
 }

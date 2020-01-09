@@ -9,9 +9,9 @@ public interface ContactService {
 
     List<Contact> getContacts();
 
-    Contact createContact(Contact contact);
+    void createContact(Contact contact);
 
-    Contact updateContact(Contact contact);
+    Contact updateContact(int id, Contact contact);
 
     void deleteContact(int id);
 }
