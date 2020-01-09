@@ -3,6 +3,7 @@ package com.example.demo.repository;
 import com.example.demo.model.Contact;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -22,7 +23,7 @@ public class ContactRepositoryImpl implements ContactRepository {
 
     @Override
     public List<Contact> getContacts() {
-        return null;
+        return new ArrayList<>(this.collection.values());
     }
 
     @Override

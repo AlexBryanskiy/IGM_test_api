@@ -4,7 +4,6 @@ import com.example.demo.model.Contact;
 import com.example.demo.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -24,7 +23,7 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public List<Contact> getContacts() {
-        return null;
+        return this.contactRepository.getContacts();
     }
 
     @Override

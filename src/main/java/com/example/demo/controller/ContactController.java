@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 public class ContactController {
@@ -19,13 +20,18 @@ public class ContactController {
         this.contactService = contactService;
     }
 
+    @RequestMapping(value = "contacts", method = RequestMethod.GET)
+    public ResponseEntity<List<Contact>> getContactsList() {
+        return new ResponseEntity<>(this.contactService.getContacts(), HttpStatus.OK);
+    }
+
     /**
      * Gets contact.
      *
      * @param id the id of contact
      * @return the contact
      */
-    @RequestMapping(value = "contact/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "contacts/{id}", method = RequestMethod.GET)
     public ResponseEntity<Contact> getContact(@PathVariable("id") String id) {
         Contact contact = this.contactService.getContact(Integer.parseInt(id));
 
@@ -42,8 +48,8 @@ public class ContactController {
      * @param payload the contact
      * @return the response entity
      */
-    @RequestMapping(value = "contact", method = RequestMethod.POST)
-    public ResponseEntity<Contact> createContact(@RequestBody String payload) throws JsonProcessingException {
+    @RequestMapping(value = "contacts", method = RequestMethod.POST)
+    public ResponseEntity<Contact> createContact(@RequestBody String payload) {
         ObjectMapper objectMapper = new ObjectMapper();
 
         Contact contact = null;
@@ -66,7 +72,7 @@ public class ContactController {
      * @param payload the payload
      * @return the response entity
      */
-    @RequestMapping(value = "contact/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "contacts/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Contact> updateContact(@PathVariable("id") String id, @RequestBody String payload) {
 
         ObjectMapper objectMapper = new ObjectMapper();

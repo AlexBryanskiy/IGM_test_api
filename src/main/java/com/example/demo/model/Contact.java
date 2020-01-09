@@ -12,11 +12,10 @@ public class Contact {
     private String address;
 
     public Contact() {
-
-    }
+        incrementId();
+    };
 
     public Contact(String firstName, String lastName, String fullName, String phoneNumber, String cellPhoneNumber, String address) {
-        this.incrementId();
         this.firstName = firstName;
         this.lastName = lastName;
         this.fullName = fullName;
@@ -90,7 +89,7 @@ public class Contact {
                 '}';
     }
 
-    private void incrementId() {
+    private static void incrementId() {
         id++;
     }
 }
