@@ -1,7 +1,7 @@
-package com.example.demo.controller;
+package com.example.contactBook.controller;
 
-import com.example.demo.model.Contact;
-import com.example.demo.service.ContactService;
+import com.example.contactBook.model.Contact;
+import com.example.contactBook.service.ContactService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;

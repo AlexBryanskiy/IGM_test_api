@@ -1,6 +1,6 @@
-package com.example.demo.service;
+package com.example.contactBook.service;
 
-import com.example.demo.model.Contact;
+import com.example.contactBook.model.Contact;
 import java.util.List;
 
 public interface ContactService {

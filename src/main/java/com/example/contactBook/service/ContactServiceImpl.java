@@ -1,7 +1,7 @@
-package com.example.demo.service;
+package com.example.contactBook.service;
 
-import com.example.demo.model.Contact;
-import com.example.demo.repository.ContactRepository;
+import com.example.contactBook.model.Contact;
+import com.example.contactBook.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;

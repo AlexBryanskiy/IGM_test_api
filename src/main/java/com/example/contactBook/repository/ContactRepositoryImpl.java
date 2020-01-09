@@ -1,6 +1,6 @@
-package com.example.demo.repository;
+package com.example.contactBook.repository;
 
-import com.example.demo.model.Contact;
+import com.example.contactBook.model.Contact;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
