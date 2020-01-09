@@ -1,8 +1,10 @@
 package com.example.demo.model;
 
+
 public class Contact {
 
-    private int id;
+
+    private static int id = 0;
     private String firstName;
     private String lastName;
     private String fullName;
@@ -10,12 +12,22 @@ public class Contact {
     private String cellPhoneNumber;
     private String address;
 
-    public int getId() {
-        return id;
+    public Contact() {
+
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Contact(String firstName, String lastName, String fullName, String phoneNumber, String cellPhoneNumber, String address) {
+        this.incrementId();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
+        this.cellPhoneNumber = cellPhoneNumber;
+        this.address = address;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getFirstName() {
@@ -77,5 +89,9 @@ public class Contact {
                 ", cellPhoneNumber='" + cellPhoneNumber + '\'' +
                 ", address='" + address + '\'' +
                 '}';
+    }
+
+    private void incrementId() {
+        id++;
     }
 }
