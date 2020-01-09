@@ -3,7 +3,6 @@ package com.example.demo.model;
 
 public class Contact {
 
-
     private static int id = 0;
     private String firstName;
     private String lastName;
