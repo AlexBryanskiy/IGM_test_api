@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class ContactController {
@@ -33,7 +36,7 @@ public class ContactController {
      */
     @RequestMapping(value = "contacts/{id}", method = RequestMethod.GET)
     public ResponseEntity<Contact> getContact(@PathVariable("id") String id) {
-        Contact contact = this.contactService.getContact(Integer.parseInt(id));
+        Contact contact = this.contactService.getContact(UUID.fromString(id));
 
         if (contact != null) {
             return new ResponseEntity<>(contact, HttpStatus.OK);
@@ -85,10 +88,22 @@ public class ContactController {
             return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
         }
 
-        if (this.contactService.updateContact(Integer.parseInt(id), contact) == null) {
+        if (this.contactService.updateContact(UUID.fromString(id), contact) == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             return new ResponseEntity<>(contact, HttpStatus.OK);
         }
+    }
+
+    @RequestMapping(value = "contacts/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Contact> deleteContact(@PathVariable("id") String id) {
+
+        try {
+            this.contactService.deleteContact(UUID.fromString(id));
+        } catch (EntityNotFoundException exception) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

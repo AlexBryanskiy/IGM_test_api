@@ -5,6 +5,7 @@ import com.example.contactBook.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class ContactServiceImpl implements ContactService {
@@ -17,7 +18,7 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public Contact getContact(int id) {
+    public Contact getContact(UUID id) {
         return this.contactRepository.getById(id);
     }
 
@@ -32,12 +33,12 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public Contact updateContact(int id, Contact contact) {
+    public Contact updateContact(UUID id, Contact contact) {
         return this.contactRepository.update(id, contact);
     }
 
     @Override
-    public void deleteContact(int id) {
-
+    public void deleteContact(UUID id) {
+        this.contactRepository.delete(id);
     }
 }

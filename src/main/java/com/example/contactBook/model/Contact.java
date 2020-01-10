@@ -1,9 +1,10 @@
 package com.example.contactBook.model;
 
+import java.util.UUID;
 
 public class Contact {
 
-    private static int id = 0;
+    private UUID id = UUID.randomUUID();
     private String firstName;
     private String lastName;
     private String fullName;
@@ -12,7 +13,7 @@ public class Contact {
     private String address;
 
     public Contact() {
-        incrementId();
+        this.id = UUID.randomUUID();
     };
 
     public Contact(String firstName, String lastName, String fullName, String phoneNumber, String cellPhoneNumber, String address) {
@@ -24,7 +25,7 @@ public class Contact {
         this.address = address;
     }
 
-    public int getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -89,7 +90,7 @@ public class Contact {
                 '}';
     }
 
-    private static void incrementId() {
-        id++;
-    }
+//    private static void incrementId() {
+//        id++;
+//    }
 }
